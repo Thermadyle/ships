@@ -1,0 +1,10 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/freeman/captain_hat_diffuse"
+
+
+// Tinting
+	
+	"$blendtintbybasealpha" "1" 
+ 	"$blendtintcoloroverbase" "0"
+}
