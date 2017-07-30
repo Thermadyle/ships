@@ -5,6 +5,8 @@ include("cvars.lua")
 include("player_class/ship_player.lua")
 include("player_class/ship_captain.lua")
 
+GM.Name = "Ships"
+
 team.SetUp(0, "Ocean winds", Color(172, 172, 191), false)
 team.SetUp(1, "Roundheads", Color(192, 48, 0), true)
 team.SetUp(2, "Squareheads", Color(0, 48, 192), true)
