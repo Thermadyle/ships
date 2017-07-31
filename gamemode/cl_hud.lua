@@ -114,6 +114,8 @@ function GM:HUDPaint()
         draw.DrawText(name, "VictoryText", x + w * 0.5 + ss * 2, y + ss * 2, color_black, TEXT_ALIGN_CENTER)
         draw.DrawText(name, "VictoryText", x + w * 0.5, y, col, TEXT_ALIGN_CENTER)
     end
+    -- target id
+    hook.Run("HUDDrawTargetID")
 end
 
 function GM:HUDShouldDraw(name)
