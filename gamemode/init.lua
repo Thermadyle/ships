@@ -43,9 +43,12 @@ resource.AddFile("sound/ships/captdead.mp3")
 
 util.AddNetworkString("ships_jingle")
 
+GM.dead_persist = {} -- for people who attempt to reconnect to spawn again
+
 function GM:PlayerInitialSpawn(ply)
     -- jump into the round if started
-    if GetGlobalBool("round_started") then
+    local dead_persist =  self.dead_persist[ply:SteamID()] and #player.GetAll() ~= 1
+    if GetGlobalBool("round_started") and (not dead_persist) then
         local team_index = 1
         for i = 2, self:GetTeamCount() do
             local count = team.NumPlayers(team_index)
@@ -120,7 +123,7 @@ end
 
 function GM:PlayerDeathThink(ply)
     if GetGlobalBool("round_started") and ply:GetDeadTime() >= cvar_respawntime:GetInt() then
-        if util.IsCaptainAlive(ply:Team()) or #player.GetAll() == 1 then
+         if (ply:Team() ~= 0 and util.IsCaptainAlive(ply:Team())) or #player.GetAll() == 1 then
             if IsValid(hook.Run("PlayerSelectSpawn", ply)) then
                 ply:Spawn()
             end
@@ -145,6 +148,7 @@ function GM:PostPlayerDeath(ply)
         end)
     end
     ply:SetNWFloat("die_time", CurTime())
+    self.dead_persist[ply:SteamID()] = true
 end
 
 function GM:ShipSelectSpawn(ship)
