@@ -16,6 +16,7 @@ function ENT:Use(ply)
         self:KickDriver()
     elseif (not IsValid(driver)) then
         self.ship:SetDriver(ply)
+        self.driver_start = CurTime()
         self.walk_speed = ply:GetWalkSpeed()
         self.run_speed = ply:GetRunSpeed()
         ply:SetWalkSpeed(0.00001525878)
