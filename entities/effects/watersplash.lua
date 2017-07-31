@@ -1,3 +1,5 @@
+AddCSLuaFile()
+
 function EFFECT:Init()
 end
 
