@@ -379,7 +379,7 @@ local females = {
     ["models/player/group03/female_05.mdl"] = true,
     ["models/player/group03/female_06.mdl"] = true
 }
-function GM:EntityTakeDamage(ent)
+function GM:EntityTakeDamage(ent, dmg)
     if ent:IsPlayer() and ent:Alive() then
         if hook.Run("PlayerShouldTakeDamage", ent, dmg:GetAttacker()) then
             if females[ent:GetModel():lower()] then
