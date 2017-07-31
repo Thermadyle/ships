@@ -45,8 +45,8 @@ function ENT:GetEntityWaterLevel(ent)
     if (not water) then
         return 0
     end
-    local height = ent:OBBMaxs().z + ent:OBBMins().z
+    local height = ent:OBBMaxs().z - ent:OBBMins().z
     height = (height ~= 0 and height) or 16
     local pos = self:StationToShip(ent:GetPos(), angle_zero)
-    return math.min(3, math.max(0, level - pos.z) / height * 3)
+    return math.max(0, level - pos.z) / height * 3
 end
