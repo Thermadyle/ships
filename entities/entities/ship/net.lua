@@ -18,7 +18,7 @@ if SERVER then
             net.Broadcast()
         end
     end
-    net.Receive("ship_download", function(ply)
+    net.Receive("ship_download", function(_, ply)
         local ship = net.ReadEntity()
         if IsValid(ship) and ship:GetClass() == "ship" then
             for i = 1, #ship.hulls do
