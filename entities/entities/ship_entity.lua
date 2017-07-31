@@ -10,7 +10,7 @@ function ENT:Think()
         end
         -- remove if deep into the water
         if IsValid(self.ship) then
-            if self.ship:GetEntityWaterLevel(self) >= 3.25 then
+            if self.ship:GetEntityWaterLevel(self) >= 3 then
                 self:Remove()
             end
         end
