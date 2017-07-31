@@ -38,6 +38,8 @@ else
                     local parent_mesh = hull.meshes[parent_index]
                     for _, mesh in ipairs{parent_mesh:Subdivide()} do
                         mesh.mat_index = parent_mesh.mat_index
+                        mesh.levels = parent_mesh.levels
+                        mesh.level = parent_mesh.level + 1
                         mesh.index = table.insert(hull.meshes, mesh)
                     end
                 end
