@@ -75,9 +75,9 @@ function GM:PostDrawTranslucentRenderables()
 end
 
 function GM:OnEntityCreated(ent)
-    if ent:GetClass() == "ship" and self:GetRoundTime() > 10 then
+    if ent:GetClass() == "ship" and self:GetRoundTime() > 5 then
         net.Start("ship_download")
-        net.WriteEntity(self)
+        net.WriteEntity(ent)
         net.SendToServer()
     end
 end
