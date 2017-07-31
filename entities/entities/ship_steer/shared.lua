@@ -14,9 +14,6 @@ function ENT:Initialize()
         self:SetUseType(SIMPLE_USE)
         self:GetPhysicsObject():EnableMotion(false)
         self:DrawShadow(false)
-        local min = Vector(-1, -1, -1) * 256
-        local max = Vector(1, 1, 1) * 256
-        self:SetCollisionBounds(min, max)
     end
 end
 
