@@ -165,6 +165,8 @@ end
 
 function GM:StartRound(time)
     game.CleanUpMap()
+    SetGlobalBool("round_started", false)
+    SetGlobalBool("round_starting", true)
     local teams = self:GetTeamCount()
     for i = 1, teams do
         local ship = ents.Create("ship")
