@@ -381,10 +381,12 @@ local females = {
 }
 function GM:EntityTakeDamage(ent)
     if ent:IsPlayer() and ent:Alive() then
-        if females[ent:GetModel():lower()] then
-            ent:EmitSound(female_sounds[math.random(#female_sounds)])
-        else
-            ent:EmitSound(male_sounds[math.random(#male_sounds)])
+        if hook.Run("PlayerShouldTakeDamage", ent, dmg:GetAttacker()) then
+            if females[ent:GetModel():lower()] then
+                ent:EmitSound(female_sounds[math.random(#female_sounds)])
+            else
+                ent:EmitSound(male_sounds[math.random(#male_sounds)])
+            end
         end
     end
 end
