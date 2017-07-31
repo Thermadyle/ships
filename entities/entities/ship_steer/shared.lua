@@ -25,7 +25,11 @@ function ENT:Think()
         local turn_dir = 0
         local driver = self.ship:GetDriver()
         if IsValid(driver) then
-            if (not driver:Alive()) or (driver:GetPos() - self:GetPos()):LengthSqr() > 9216 then
+            local time = (self.driver_start and CurTime() - self.driver_start) or 0
+            if (not driver:Alive()) or 
+                (time > 0.5 and driver:KeyDownLast(IN_USE)) or
+                (driver:GetPos() - self:GetPos()):LengthSqr() > 9216 then
+                
                 self:KickDriver()
             else
                 if driver:KeyDown(IN_MOVERIGHT) then
