@@ -148,7 +148,9 @@ function GM:PostPlayerDeath(ply)
         end)
     end
     ply:SetNWFloat("die_time", CurTime())
-    self.dead_persist[ply:SteamID()] = true
+    if (not util.IsCaptainAlive(ply:Team())) then
+        self.dead_persist[ply:SteamID()] = true
+    end
 end
 
 function GM:ShipSelectSpawn(ship)
